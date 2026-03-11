@@ -22,38 +22,10 @@ void Display::init()
 }
 
 void Display::fillScreen(uint32_t color)
-{
-    lv_color_hex(color);
+{   
+    lv_obj_t *scr = lv_scr_act();
+    lv_obj_set_style_bg_color(scr, lv_color_hex(color), LV_PART_MAIN);
+    lv_obj_set_style_bg_opa(scr, LV_OPA_COVER, LV_PART_MAIN);
 }
 
-void Display::setCursor(int x, int y)
-{
-    cursor_x = x;
-    cursor_y = y;
-}
 
-void Display::setTextColor(uint32_t color)
-{
-    text_color = color;
-
-    if (label)
-    {
-        lv_obj_set_style_text_color(label,
-                                    lv_color_hex(text_color),
-                                    LV_PART_MAIN);
-    }
-}
-
-void Display::setTextSize(uint8_t size)
-{
-    text_size = size;
-}
-
-void Display::print(const char *text)
-{
-    if (!label)
-        return;
-
-    lv_label_set_text(label, text);
-    lv_obj_set_pos(label, cursor_x, cursor_y);
-}
