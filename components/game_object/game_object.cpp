@@ -21,6 +21,19 @@ void GameObject::setColor(uint32_t color) {
 lv_obj_t* GameObject::getObj() {
     return obj;
 }
-// void GameObject::setImg() {
-//     lv_obj_set_style_bg_image_src(obj, )
-// }
+
+int32_t GameObject:: getX(){
+    return lv_obj_get_x(obj);
+}
+
+int32_t GameObject:: getY(){
+    return lv_obj_get_y(obj);
+}
+
+uint32_t GameObject:: getWidth(){
+    return lv_obj_get_width(obj);
+}
+
+uint32_t GameObject:: getHeight(){
+    return lv_obj_get_height(obj);
+}
