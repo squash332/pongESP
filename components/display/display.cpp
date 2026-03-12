@@ -1,4 +1,5 @@
 #include "display.hpp"
+#include "constants.hpp"
 
 Display::Display()
 {
@@ -12,15 +13,8 @@ Display::Display()
 
     lv_obj_t *scr = lv_scr_act();
     label = lv_label_create(scr);
-    lv_label_set_text(label, "");
-    lv_obj_align(label, LV_ALIGN_TOP_LEFT, 10, 10);
-}
-
-void Display::fillScreen(uint32_t color)
-{   
-    lv_obj_t *scr = lv_scr_act();
-    lv_obj_set_style_bg_color(scr, lv_color_hex(color), LV_PART_MAIN);
+    lv_obj_set_style_bg_color(scr, lv_color_hex(0x000000), LV_PART_MAIN);
     lv_obj_set_style_bg_opa(scr, LV_OPA_COVER, LV_PART_MAIN);
+    lv_label_set_text(label, "");
+    lv_obj_align(label, LV_ALIGN_TOP_LEFT, X_OFFSET, Y_OFFSET);
 }
-
-

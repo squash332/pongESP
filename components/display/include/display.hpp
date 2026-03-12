@@ -11,8 +11,6 @@ public:
     Display();
     ~Display() = default;
 
-    lv_obj_t* getRoot(); // parent for game objects for easier child positioning
-    void fillScreen(uint32_t color);
 
 private:
     lv_obj_t* label = nullptr;
