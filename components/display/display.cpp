@@ -2,11 +2,6 @@
 
 Display::Display()
 {
-    init();
-}
-
-void Display::init()
-{
     bsp_display_cfg_t cfg = {
         .lvgl_port_cfg = ESP_LVGL_PORT_INIT_CONFIG(),
         .buffer_size = BSP_LCD_H_RES * CONFIG_BSP_LCD_DRAW_BUF_HEIGHT,
