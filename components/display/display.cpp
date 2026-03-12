@@ -10,7 +10,6 @@ Display::Display()
     bsp_display_start_with_config(&cfg);
 
     bsp_display_backlight_on();
-
     lv_obj_t *scr = lv_scr_act();
     label = lv_label_create(scr);
     lv_obj_set_style_bg_color(scr, lv_color_hex(0x000000), LV_PART_MAIN);

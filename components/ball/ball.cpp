@@ -22,12 +22,12 @@ void Ball::update()
     y += vy;
 
     // left right
-    if (x <= 0 || x > WIDTH - getWidth()) {
+    if (x <= X_OFFSET || x > WIDTH - getWidth() - X_OFFSET) {
         vx = -vx;
     }
 
     // top or btm
-    if (y <= 0 || y > HEIGHT - getHeight()) { 
+    if (y <= Y_OFFSET || y > HEIGHT - getHeight() - Y_OFFSET) { 
         vy = -vy;
     }
 
