@@ -15,8 +15,11 @@ public:
      **********************/
 
     // start in a random direction, random spawn, ball needs to spawn in the top half of the display
+    // random spawn - done
+    // movement directions? 
+    // get current x and y coordinate of ball
 
 private:
-    int32_t vx;
-    int32_t vy;
+    int32_t x, y, vx, vy;
+
 };

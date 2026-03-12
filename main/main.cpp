@@ -2,6 +2,7 @@
 #include "ball.hpp"
 #include "esp_random.h"
 #include "paddle.hpp"
+#include "esp_log.h"
 
 extern "C" void app_main()
 {
@@ -15,7 +16,10 @@ extern "C" void app_main()
     while (true)
     {
         ball.update();
+
+        ESP_LOGI("ball", "x:%ld y:%ld\n", ball.getX(), ball.getY());
         lv_timer_handler();
-        vTaskDelay(pdMS_TO_TICKS(500));
+
+        vTaskDelay(pdMS_TO_TICKS(16));
     }
 }

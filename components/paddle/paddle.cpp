@@ -10,4 +10,5 @@ Paddle::Paddle(lv_obj_t *parent) : GameObject(parent)
 
 void Paddle::update()
 {
+    
 }
