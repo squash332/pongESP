@@ -1,7 +1,9 @@
 #include "display.hpp"
 #include "ball.hpp"
-#include "esp_random.h"
 #include "paddle.hpp"
+#include "blocks.hpp"
+
+#include "esp_random.h"
 #include "esp_log.h"
 
 extern "C" void app_main()
@@ -9,9 +11,11 @@ extern "C" void app_main()
     Display display;
 
     srand(esp_random());
+    lv_timer_handler();
 
     Paddle paddle(lv_scr_act());
     Ball ball(lv_scr_act());
+    Block block(lv_scr_act(), 50, 50);
 
     while (true)
     {
