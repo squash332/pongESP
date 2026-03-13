@@ -1,17 +1,9 @@
-#pragma once
-#include "lvgl.h"
-#include <vector>
+#pragma once 
 #include "constants.hpp"
-#include "game_object.hpp"
+#include "lvgl.h"
+#define TILE_SIZE 16
+extern bool blocks[COLS][ROWS];
 
-class Block : public GameObject
-{
-public:
-    Block(lv_obj_t* parent, uint32_t x, uint32_t y);
-    ~Block() = default;
+void initBlocks();
+void createBlocks(lv_obj_t* parent);
 
-    
-
-    bool alive;
-
-};

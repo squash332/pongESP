@@ -1,3 +1,3 @@
 idf_component_register(SRCS "blocks.cpp"
-                    REQUIRES constants game_object
+                    REQUIRES lvgl constants
                     INCLUDE_DIRS "include")

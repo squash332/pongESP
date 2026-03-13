@@ -2,7 +2,6 @@
 #include "lvgl.h"
 #include "game_object.hpp"
 #include "constants.hpp"
-#include "blocks.hpp"
 class Ball : public GameObject
 {
 public:
