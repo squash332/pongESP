@@ -22,7 +22,6 @@ extern "C" void app_main()
     // Paddle paddle(lv_scr_act());
     // Ball ball(lv_scr_act());
     
-    
 
     while (true)
     {

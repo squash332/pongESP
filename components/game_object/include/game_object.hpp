@@ -14,11 +14,11 @@ public:
     void setColor(uint32_t color); // hex format -> 0x000000
     lv_obj_t* getObj();
 
-    int32_t getX();
-    int32_t getY();
+    int32_t getX() const;
+    int32_t getY() const;
 
-    uint32_t getWidth();
-    uint32_t getHeight();
+    uint32_t getWidth() const;
+    uint32_t getHeight() const;
     
     virtual void update() {} // update ball pos, paddle position etc
 };

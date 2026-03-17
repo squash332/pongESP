@@ -7,3 +7,6 @@ constexpr int DISPLAY_HEIGHT = 240;
 #define Y_OFFSET 10
 #define COLS 12
 #define ROWS 4
+#define TILE_SIZE 16
+#define SPACING 10
+#define BALL_SIZE 10
