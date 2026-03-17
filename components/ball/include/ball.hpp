@@ -2,6 +2,7 @@
 #include "lvgl.h"
 #include "game_object.hpp"
 #include "constants.hpp"
+#include "blocks.hpp"
 class Ball : public GameObject
 {
 public:
@@ -9,6 +10,9 @@ public:
     ~Ball() = default;
 
     void update() override;
+    bool collidedTop();
+    bool collidedSides();
+    bool collidedBlock();
 
 private:
     int32_t x, y, vx, vy;

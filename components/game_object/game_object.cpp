@@ -26,22 +26,22 @@ lv_obj_t *GameObject::getObj()
     return obj;
 }
 
-int32_t GameObject::getX()
+int32_t GameObject::getX() const
 {
     return lv_obj_get_x(obj);
 }
 
-int32_t GameObject::getY()
+int32_t GameObject::getY() const
 {
     return lv_obj_get_y(obj);
 }
 
-uint32_t GameObject::getWidth()
+uint32_t GameObject::getWidth() const
 {
     return lv_obj_get_width(obj);
 }
 
-uint32_t GameObject::getHeight()
+uint32_t GameObject::getHeight() const
 {
     return lv_obj_get_height(obj);
 }
