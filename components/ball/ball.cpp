@@ -61,8 +61,9 @@ bool Ball::collidedBlock()
 
     if (blocks[ball_col][ball_row]) {
         blocks[ball_col][ball_row] = false;
+        bsp_display_lock(0);
         lv_obj_del(blocks_objs[ball_col][ball_row]);
-
+        bsp_display_unlock();
         int blockX = ball_col * (TILE_SIZE + SPACING) + X_OFFSET;
         int blockY = ball_row * (TILE_SIZE + SPACING / 2) + Y_OFFSET;
 
