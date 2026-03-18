@@ -1,4 +1,5 @@
 #include "ball.hpp"
+extern Paddle *paddle;
 
 Ball::Ball(lv_obj_t *parent) : GameObject(parent)
 {
@@ -32,6 +33,7 @@ void Ball::update()
         vy = -vy;
 
     collidedBlock();
+    collidedPaddle();
 
     //     // TODO
 
@@ -46,6 +48,7 @@ bool Ball::collidedSides()
 bool Ball::collidedTop()
 {
     return (y <= Y_OFFSET || y > DISPLAY_HEIGHT - getHeight() - Y_OFFSET);
+    // || y > DISPLAY_HEIGHT - getHeight() - Y_OFFSET) btm check
 }
 
 bool Ball::collidedBlock()
@@ -83,4 +86,10 @@ bool Ball::collidedBlock()
 
 
     return false;
+}
+
+bool Ball::collidedPaddle() {
+    
+    
+    return false;    
 }

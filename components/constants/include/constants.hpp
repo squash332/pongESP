@@ -10,3 +10,4 @@ constexpr int DISPLAY_HEIGHT = 240;
 #define TILE_SIZE 16
 #define SPACING 10
 #define BALL_SIZE 10
+#define PADDLE_Y_POS DISPLAY_HEIGHT - 2*Y_OFFSET

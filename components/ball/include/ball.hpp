@@ -4,6 +4,7 @@
 #include "constants.hpp"
 #include "blocks.hpp"
 #include "bsp/esp-bsp.h"
+#include "paddle.hpp"
 class Ball : public GameObject
 {
 public:
@@ -14,6 +15,7 @@ public:
     bool collidedTop();
     bool collidedSides();
     bool collidedBlock();
+    bool collidedPaddle();
 
 private:
     int32_t x, y, vx, vy;
