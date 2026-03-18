@@ -4,10 +4,9 @@ Touch::Touch() {
 
     indev = lv_indev_get_next(nullptr);
 
-
 }
 
-bool Touch::read(uint32_t &x, uint32_t &y) {
+bool Touch::read() {
 
     bsp_display_lock(0);
     lv_indev_read(indev);
@@ -19,6 +18,7 @@ bool Touch::read(uint32_t &x, uint32_t &y) {
         x = point.x;
         y = point.y;
         bsp_display_unlock();
+        // printf("%ld, %ld\n", x, y);
         return true;
     }
     return false;

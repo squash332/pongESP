@@ -3,6 +3,7 @@
 #include "paddle.hpp"
 #include "blocks.hpp"
 #include "constants.hpp"
+#include "touch.hpp"
 
 #include "esp_random.h"
 #include "esp_log.h"
@@ -10,10 +11,12 @@
 void game_init(lv_obj_t *src);
 Paddle *paddle;
 Ball *ball;
+Touch *touch;
 
 extern "C" void app_main()
 {
     Display display;
+    touch = new Touch();
     
     srand(esp_random());
     lv_timer_handler();
@@ -25,6 +28,9 @@ extern "C" void app_main()
 
     while (true)
     {
+        if (touch->read()) {
+            paddle->update();
+        }
         ball->update();
         
         // ESP_LOGI("ball", "x:%ld y:%ld\n", ball.getX(), ball.getY());
