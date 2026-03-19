@@ -13,10 +13,15 @@ public:
 
     void update() override;
     bool collidedTop();
+    bool gameOver();
     bool collidedSides();
     bool collidedBlock();
     bool collidedPaddle();
 
+    int16_t getCenterX() const;
+    int16_t getCenterY() const;
+    int16_t getBallCol() const;
+    int16_t getBallRow() const;
 private:
     int32_t x, y, vx, vy;
 
