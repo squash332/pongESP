@@ -1,5 +1,6 @@
 #include "ball.hpp"
 extern Paddle *paddle;
+static int BLOCK_COUNT = COLS*ROWS;
 
 Ball::Ball(lv_obj_t *parent) : GameObject(parent)
 {
@@ -39,7 +40,8 @@ void Ball::update()
 
     setPosition(x, y);
     // if (gameOver()) if game over, popup -> stops game, shows Score, time elapsed, Options: play again, Back to Menu
-        
+    if (gameOver())
+        active = false;
         
 }
 
@@ -56,7 +58,7 @@ bool Ball::collidedTop()
 
 bool Ball::gameOver()
 {
-    if (y > DISPLAY_HEIGHT - getHeight() - Y_OFFSET)
+    if (y > DISPLAY_HEIGHT - getHeight() - Y_OFFSET || BLOCK_COUNT == 0)
         return true;
 
     return false;
@@ -90,6 +92,7 @@ bool Ball::collidedBlock()
         else
             vy = -vy;
 
+        BLOCK_COUNT--;
         return true;
     }
 

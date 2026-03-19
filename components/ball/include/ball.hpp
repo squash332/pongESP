@@ -22,6 +22,8 @@ public:
     int16_t getCenterY() const;
     int16_t getBallCol() const;
     int16_t getBallRow() const;
+
+    bool active = true;
 private:
     int32_t x, y, vx, vy;
 
