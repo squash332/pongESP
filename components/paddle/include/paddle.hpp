@@ -1,5 +1,4 @@
 #pragma once
-#include "lvgl.h"
 #include "game_object.hpp"
 #include "touch.hpp"
 

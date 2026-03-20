@@ -1,5 +1,5 @@
 #include "ball.hpp"
-extern Paddle *paddle;
+extern std::unique_ptr<Paddle> paddle;
 static int BLOCK_COUNT = COLS*ROWS;
 
 Ball::Ball(lv_obj_t *parent) : GameObject(parent)

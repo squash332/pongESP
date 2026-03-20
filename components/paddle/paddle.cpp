@@ -4,7 +4,7 @@ extern Touch *touch; // spent 45 mins debugging and realized i was setting posit
 Paddle::Paddle(lv_obj_t *parent) : GameObject(parent)
 {
 
-    setSize(170, 10);
+    setSize(100, 10);
     setColor(0xFFFFFF);
     lv_obj_align(obj, LV_ALIGN_TOP_LEFT, 0, PADDLE_Y_POS);
     // for some wild reason without forcing the layout update, getWidth() in next line returns 0 so this is necessary

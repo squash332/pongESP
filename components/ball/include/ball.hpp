@@ -1,10 +1,10 @@
 #pragma once
-#include "lvgl.h"
 #include "game_object.hpp"
 #include "constants.hpp"
 #include "blocks.hpp"
 #include "bsp/esp-bsp.h"
 #include "paddle.hpp"
+#include <memory>
 class Ball : public GameObject
 {
 public:
