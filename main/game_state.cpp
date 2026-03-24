@@ -8,7 +8,7 @@ GameState state = GameState::MENU;
 void setState(GameState newState) {
     switch(state) {
         case GameState::MENU: hideMenu(); break;
-        case GameState::PLAYING: stopGame(); break;
+        case GameState::PLAYING: restartGame(); break;
         case GameState::GAME_OVER: hideGameOver(); break;
     }
 

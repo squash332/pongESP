@@ -15,7 +15,7 @@ static void play_button_event_cb(lv_event_t *e)
 
 void showMenu(lv_obj_t *src)
 {
-    lv_obj_clean(src);
+    // lv_obj_clean(src);
     menuScreen = lv_obj_create(src);
     lv_obj_set_size(menuScreen, DISPLAY_WIDTH, DISPLAY_HEIGHT);
     lv_obj_set_style_bg_color(menuScreen, lv_color_hex(0x000000), LV_PART_MAIN);

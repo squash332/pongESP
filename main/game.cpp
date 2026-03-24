@@ -6,7 +6,7 @@ extern Touch* touch;
 
 void gameInit(lv_obj_t *src)
 {
-    lv_obj_clean(src);
+    // lv_obj_clean(src);
     paddle = std::make_unique<Paddle>(src);
     ball = std::make_unique<Ball>(src);
 
@@ -30,8 +30,9 @@ void updateGame()
     }
 }
 
-void stopGame()
+void restartGame()
 {
     paddle.reset();
     ball.reset();
+
 }

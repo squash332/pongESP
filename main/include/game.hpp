@@ -10,7 +10,7 @@
 
 void gameInit(lv_obj_t *src);
 void updateGame();
-void stopGame();
+void restartGame();
 
 extern std::unique_ptr<Paddle> paddle;
 extern std::unique_ptr<Ball> ball;

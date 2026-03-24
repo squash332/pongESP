@@ -21,7 +21,7 @@ static void menu_button_event_cb(lv_event_t *e)
 
 void showGameOver(lv_obj_t *src) {
     
-    lv_obj_clean(src);
+    // lv_obj_clean(src);
 
     // pop-out
     gameOverScreen = lv_obj_create(src);

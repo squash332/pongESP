@@ -12,9 +12,9 @@ extern "C" void app_main()
 {
     Display display;
     touch = new Touch();
-    
+
     lv_timer_handler();
-    setState(GameState::MENU);
+    setState(GameState::GAME_OVER);
 
     while (true)
     {
@@ -27,7 +27,6 @@ extern "C" void app_main()
         case GameState::MENU:
             break;
         case GameState::PLAYING:
-            hideGameOver();
             updateGame();
             break;
         case GameState::GAME_OVER:
