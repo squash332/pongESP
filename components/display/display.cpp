@@ -11,9 +11,6 @@ Display::Display()
 
     bsp_display_backlight_on();
     lv_obj_t *scr = ACTIVE_SCREEN();
-    label = lv_label_create(scr);
     lv_obj_set_style_bg_color(scr, lv_color_hex(0x000000), LV_PART_MAIN);
     lv_obj_set_style_bg_opa(scr, LV_OPA_COVER, LV_PART_MAIN);
-    lv_label_set_text(label, "");
-    lv_obj_align(label, LV_ALIGN_TOP_LEFT, X_OFFSET, Y_OFFSET);
 }

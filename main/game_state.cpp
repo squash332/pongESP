@@ -8,7 +8,7 @@ GameState state = GameState::MENU;
 void setState(GameState newState) {
     switch(state) {
         case GameState::MENU: hideMenu(); break;
-        case GameState::PLAYING: restartGame(); break;
+        case GameState::PLAYING: hideGame(); break;
         case GameState::GAME_OVER: hideGameOver(); break;
     }
 
@@ -17,6 +17,6 @@ void setState(GameState newState) {
     switch(state) {
         case GameState::MENU: showMenu(); break;
         case GameState::PLAYING: gameInit(); break;
-        case GameState::GAME_OVER: showGameOver(); break;
+        case GameState::GAME_OVER: showGameOver(score); break;
     }
 }

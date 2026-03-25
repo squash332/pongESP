@@ -20,20 +20,24 @@ static void menu_button_event_cb(lv_event_t *e)
     }
 }
 
-void showGameOver() {
+void showGameOver(uint32_t receivedScore) {
     // pop-out
 
     gameOverScreen = new Screen();
     lv_obj_set_style_bg_color(gameOverScreen->scr, lv_color_hex(0x333333), LV_PART_MAIN);
-    lv_disp_load_scr(gameOverScreen->scr);
+    lv_scr_load(gameOverScreen->scr);
 
     // title
     lv_obj_t* titleLabel = lv_label_create(gameOverScreen->scr);
     lv_label_set_text(titleLabel, "GAME OVER");
     lv_obj_set_style_text_color(titleLabel, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
-    lv_obj_align(titleLabel, LV_ALIGN_TOP_MID, 0, 10);
+    lv_obj_align(titleLabel, LV_ALIGN_TOP_MID, 0, LV_PCT(5));
 
     // score: blabla
+    lv_obj_t* currentScore = lv_label_create(gameOverScreen->scr);
+    lv_label_set_text_fmt(currentScore, "SCORE: %ld", receivedScore);
+    lv_obj_set_style_text_color(currentScore, lv_color_hex(0xFFFFFF), LV_PART_MAIN);
+    lv_obj_align(currentScore, LV_ALIGN_TOP_MID, 0, LV_PCT(15));
 
     
     // play again btn

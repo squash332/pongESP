@@ -10,7 +10,8 @@
 
 void gameInit();
 void updateGame();
-void restartGame();
+void hideGame();
 
+extern uint32_t score;
 extern std::unique_ptr<Paddle> paddle;
 extern std::unique_ptr<Ball> ball;

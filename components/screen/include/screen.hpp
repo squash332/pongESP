@@ -9,6 +9,7 @@ class Screen {
     ~Screen() = default;
     
     lv_obj_t* getScr();
+    lv_obj_t* label;
 
     void show();
     void hide();
