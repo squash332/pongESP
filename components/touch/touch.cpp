@@ -2,7 +2,7 @@
 
 Touch::Touch() {
 
-    indev = lv_indev_get_next(nullptr);
+    indev = bsp_display_get_input_dev();
 
 }
 
@@ -21,6 +21,7 @@ bool Touch::read() {
         // printf("%ld, %ld\n", x, y);
         return true;
     }
+    bsp_display_unlock();
     return false;
 }
 
