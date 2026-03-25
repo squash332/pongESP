@@ -1,0 +1,19 @@
+#pragma once
+
+#include "esp_lcd_touch_gt911.h"
+#include "esp_lcd_touch.h"
+#include "bsp/esp-bsp.h"
+#include "constants.hpp"
+
+
+class Touch {
+    public:
+        Touch();
+        ~Touch() = default;
+        bool read();
+
+        uint32_t x,y;
+    private: 
+        lv_indev_t* indev;
+
+};
