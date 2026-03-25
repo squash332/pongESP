@@ -6,7 +6,7 @@
 #include "menu.hpp"
 
 
-Touch *touch = nullptr;
+Touch *touch;
 
 extern "C" void app_main()
 {
@@ -14,7 +14,7 @@ extern "C" void app_main()
     touch = new Touch();
 
     lv_timer_handler();
-    setState(GameState::GAME_OVER);
+    setState(GameState::MENU);
 
     while (true)
     {
@@ -22,16 +22,10 @@ extern "C" void app_main()
         lv_timer_handler(); // instead of handler being after the switch state, it needs to be here
         // if its after the state the program keeps crashing :)
 
-        switch (state)
-        {
-        case GameState::MENU:
-            break;
-        case GameState::PLAYING:
+        if (state == GameState::PLAYING) {
             updateGame();
-            break;
-        case GameState::GAME_OVER:
-            break;
         }
+        
 
         vTaskDelay(pdMS_TO_TICKS(16));
     }

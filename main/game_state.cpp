@@ -15,8 +15,8 @@ void setState(GameState newState) {
     state = newState;
 
     switch(state) {
-        case GameState::MENU: showMenu(ACTIVE_SCREEN()); break;
-        case GameState::PLAYING: gameInit(ACTIVE_SCREEN()); break;
-        case GameState::GAME_OVER: showGameOver(ACTIVE_SCREEN()); break;
+        case GameState::MENU: showMenu(); break;
+        case GameState::PLAYING: gameInit(); break;
+        case GameState::GAME_OVER: showGameOver(); break;
     }
 }

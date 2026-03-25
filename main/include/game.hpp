@@ -8,7 +8,7 @@
 #include "touch.hpp"
 #include "blocks.hpp"
 
-void gameInit(lv_obj_t *src);
+void gameInit();
 void updateGame();
 void restartGame();
 

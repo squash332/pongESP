@@ -3,15 +3,19 @@
 std::unique_ptr<Paddle> paddle;
 std::unique_ptr<Ball> ball;
 extern Touch* touch;
+Screen* gameScreen;
 
-void gameInit(lv_obj_t *src)
+void gameInit()
 {
-    // lv_obj_clean(src);
-    paddle = std::make_unique<Paddle>(src);
-    ball = std::make_unique<Ball>(src);
+    gameScreen = new Screen();
+    lv_obj_set_style_bg_color(gameScreen->scr, lv_color_hex(0x000000), LV_PART_MAIN);
+    lv_disp_load_scr(gameScreen->scr);
+
+    paddle = std::make_unique<Paddle>(gameScreen->scr);
+    ball = std::make_unique<Ball>(gameScreen->scr);
 
     initBlocks();
-    createBlocks(src);
+    createBlocks(gameScreen->scr);
 }
 
 void updateGame()
@@ -32,7 +36,5 @@ void updateGame()
 
 void restartGame()
 {
-    paddle.reset();
-    ball.reset();
-
+    gameInit();
 }
