@@ -7,9 +7,11 @@
 
 
 Touch *touch;
+Audio *audio;
 
 extern "C" void app_main()
 {
+    audio = new Audio();
     Display display;
     touch = new Touch();
 

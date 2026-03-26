@@ -16,7 +16,9 @@ void setState(GameState newState) {
 
     switch(state) {
         case GameState::MENU: showMenu(); break;
-        case GameState::PLAYING: gameInit(); break;
+        case GameState::PLAYING:
+        gameInit();
+        audio->gameLoad(); break;
         case GameState::GAME_OVER: showGameOver(score); break;
     }
 }
