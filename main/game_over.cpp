@@ -7,7 +7,9 @@ static void restart_button_event_cb(lv_event_t *e)
     if (lv_event_get_code(e) == LV_EVENT_CLICKED)
     {
         ESP_LOGI("BUTTON EVENT", "PLAY AGAIN PRESSED");
-        setState(GameState::PLAYING);
+        lv_async_call([](void *){
+            setState(GameState::PLAYING);
+        }, NULL);
     }
 }
 
@@ -16,7 +18,9 @@ static void menu_button_event_cb(lv_event_t *e)
     if (lv_event_get_code(e) == LV_EVENT_CLICKED)
     {
         ESP_LOGI("BUTTON EVENT", "MAIN MENU PRESSED");
-        setState(GameState::MENU);
+        lv_async_call([](void *){
+            setState(GameState::MENU);
+        }, NULL);
     }
 }
 
@@ -68,7 +72,8 @@ void showGameOver(uint32_t receivedScore) {
 void hideGameOver() {
 
     if(gameOverScreen) {
-        lv_obj_del(gameOverScreen->scr); 
+        lv_obj_del(gameOverScreen->scr);
+        delete gameOverScreen;
         gameOverScreen = nullptr;
     }
 }

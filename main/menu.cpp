@@ -10,7 +10,9 @@ static void play_button_event_cb(lv_event_t *e)
     if (lv_event_get_code(e) == LV_EVENT_CLICKED)
     {
         ESP_LOGI("BUTTON EVENT", "PLAY AGAIN PRESSED");
-        setState(GameState::PLAYING);
+        lv_async_call([](void *){
+            setState(GameState::PLAYING);
+        }, NULL);
     }
 }
 
@@ -49,6 +51,7 @@ void hideMenu()
     if (menuScreen)
     {
         lv_obj_del(menuScreen->scr);
+        delete menuScreen;
         menuScreen = nullptr;
     }
 }
