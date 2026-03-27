@@ -4,6 +4,7 @@
 #include "menu.hpp"
 
 GameState state = GameState::MENU;
+extern QueueHandle_t soundQueue;
 
 void setState(GameState newState) {
     switch(state) {
@@ -15,10 +16,24 @@ void setState(GameState newState) {
     state = newState;
 
     switch(state) {
-        case GameState::MENU: showMenu(); break;
+        case GameState::MENU:
+        showMenu();
+        break;
+
         case GameState::PLAYING:
         gameInit();
-        audio->gameLoad(); break;
-        case GameState::GAME_OVER: showGameOver(score); break;
+        playSound(SOUND_GAME_LOAD);
+        break;
+
+        case GameState::GAME_OVER:
+        showGameOver(score);
+        playSound(SOUND_GAME_OVER);
+        break;
+    }
+}
+
+void playSound(SoundRequest sound) {
+    if (soundQueue != NULL) {
+        xQueueSend(soundQueue, &sound, 0);
     }
 }

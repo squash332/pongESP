@@ -1,5 +1,4 @@
 #include "audio.hpp"
-
 Audio::Audio() {
 
     speaker_dev = bsp_audio_codec_speaker_init();
@@ -7,20 +6,19 @@ Audio::Audio() {
     // spiffs init
     bsp_spiffs_mount();
     
-
-}
-
-void Audio::play(const char* path) {
-    esp_codec_dev_set_out_vol(speaker_dev, 100);
-
+    esp_codec_dev_set_out_vol(speaker_dev, 70);
+    
     esp_codec_dev_sample_info_t fs = {};
-
+    
     fs.sample_rate = 44100;
     fs.channel = 2;
     fs.bits_per_sample = 16;
-
     esp_codec_dev_open(speaker_dev, &fs);
+}
 
+void Audio::play(const char* path) {
+
+    stopRequested = false;
     FILE *f = fopen(path, "rb");
     if (!f) {
         printf("Failed to open file\n");
@@ -32,11 +30,12 @@ void Audio::play(const char* path) {
     size_t bytes_read;
 
     while ((bytes_read = fread(buffer, 1, sizeof(buffer), f)) > 0) {
+        if (stopRequested)
+            break;
         esp_codec_dev_write(speaker_dev, buffer, bytes_read);
     }
 
     fclose(f);
-    esp_codec_dev_close(speaker_dev);
 }
 
 void Audio::gameLoad() {

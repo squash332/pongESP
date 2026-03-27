@@ -4,7 +4,7 @@ static int BLOCK_COUNT = COLS*ROWS;
 
 Ball::Ball(lv_obj_t *parent) : GameObject(parent)
 {
-
+    active = true; // after 5 or 6 games, games insta crashed, probably because i set the active flag true in class and not here in constructor (fixed)
     setSize(BALL_SIZE, BALL_SIZE);
     setColor(0xFFFFFF);
 
@@ -21,12 +21,8 @@ void Ball::update()
 {
     x += vx;
     y += vy;
+    hitBlock = false;
 
-    // checkPaddleCollision();
-    // checkBlockCollision();
-    // checkBottomCollision(); // game over
-
-    // left right
     if (collidedSides())
         vx = -vx;
 
@@ -35,8 +31,6 @@ void Ball::update()
 
     collidedBlock();
     collidedPaddle();
-
-    //     // TODO
 
     setPosition(x, y);
     // if (gameOver()) if game over, popup -> stops game, shows Score, time elapsed, Options: play again, Back to Menu
@@ -93,6 +87,7 @@ bool Ball::collidedBlock()
             vy = -vy;
 
         BLOCK_COUNT--;
+        hitBlock = true;
         return true;
     }
 

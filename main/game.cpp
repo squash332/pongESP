@@ -27,6 +27,9 @@ void updateGame()
         {
             paddle->update();
         }
+        if(ball->hitBlock) {
+            playSound(SOUND_BLOCK_BREAK);
+        }
         ball->update();
     }
     else
