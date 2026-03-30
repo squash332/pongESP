@@ -71,6 +71,7 @@ bool Ball::collidedBlock()
         blocks[ball_col][ball_row] = false;
         bsp_display_lock(0);
         lv_obj_del(blocks_objs[ball_col][ball_row]);
+        blocks_objs[ball_col][ball_row] = nullptr;
         bsp_display_unlock();
         int blockX = ball_col * (TILE_SIZE + SPACING) + X_OFFSET;
         int blockY = ball_row * (TILE_SIZE + SPACING / 2) + Y_OFFSET;
@@ -118,12 +119,12 @@ bool Ball::collidedPaddle()
 
 int16_t Ball::getCenterX() const
 {
-    return x + getWidth() / 2;
+    return x + getWidth();
 }
 
 int16_t Ball::getCenterY() const
 {
-    return y + getWidth() / 2;
+    return y + getWidth();
 }
 
 int16_t Ball::getBallCol() const

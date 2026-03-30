@@ -50,7 +50,7 @@ void hideMenu()
 {
     if (menuScreen)
     {
-        lv_obj_del(menuScreen->scr);
+        lv_obj_del_async(menuScreen->scr);
         delete menuScreen;
         menuScreen = nullptr;
     }

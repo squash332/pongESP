@@ -36,7 +36,7 @@ void playSoundTask(void *arg) {
 
 extern "C" void app_main()
 {
-    Display display;
+    static Display display;
     touch = new Touch();
     audio = new Audio();
     soundQueue = xQueueCreate(5, sizeof(SoundRequest));
@@ -49,6 +49,7 @@ extern "C" void app_main()
     while (true)
     {
         lv_tick_inc(16);
+
         // instead of handler being after the switch state, it needs to be here
         // if its after the state the program keeps crashing :)
         
