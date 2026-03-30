@@ -16,7 +16,6 @@ void playSoundTask(void *arg) {
     
     while(1) {
         if (xQueueReceive(soundQueue, &req, portMAX_DELAY)) {
-            audio->stopRequested = true;
             switch(req) {
                 case SOUND_GAME_LOAD:
                 audio->gameLoad();
@@ -26,9 +25,9 @@ void playSoundTask(void *arg) {
                 audio->gameOver();
                 break;
     
-                case SOUND_BLOCK_BREAK:
-                audio->blockBreak();
-                break;
+                // case SOUND_BLOCK_BREAK:
+                // audio->blockBreak();
+                // break;
             }
         }
     }
@@ -37,24 +36,26 @@ void playSoundTask(void *arg) {
 
 extern "C" void app_main()
 {
-    audio = new Audio();
     Display display;
     touch = new Touch();
-    soundQueue = xQueueCreate(1, sizeof(SoundRequest));
+    audio = new Audio();
+    soundQueue = xQueueCreate(5, sizeof(SoundRequest));
     xTaskCreate(playSoundTask, "playSoundTask", 4096, NULL, 5, &playSoundHandle);
     setState(GameState::MENU);
+    ESP_LOGI("HEAP", "Internal: %u, SPIRAM: %u",
+         heap_caps_get_free_size(MALLOC_CAP_INTERNAL),
+         heap_caps_get_free_size(MALLOC_CAP_SPIRAM));
 
     while (true)
     {
         lv_tick_inc(16);
-         // instead of handler being after the switch state, it needs to be here
+        // instead of handler being after the switch state, it needs to be here
         // if its after the state the program keeps crashing :)
-
+        
         if (state == GameState::PLAYING) {
             updateGame();
         }
         
-
         vTaskDelay(pdMS_TO_TICKS(16));
     }
 }

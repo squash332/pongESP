@@ -18,9 +18,8 @@ class Audio {
     // void paddleBounce();
     void gameLoad();
     void gameOver();
-    void blockBreak();
+    // void blockBreak();
     void adjustVolume(uint32_t volume);
     void muteAudio();
 
-    volatile bool stopRequested;
 };

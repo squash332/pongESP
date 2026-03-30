@@ -6,7 +6,7 @@ Audio::Audio() {
     // spiffs init
     bsp_spiffs_mount();
     
-    esp_codec_dev_set_out_vol(speaker_dev, 70);
+    esp_codec_dev_set_out_vol(speaker_dev, 20);
     
     esp_codec_dev_sample_info_t fs = {};
     
@@ -18,7 +18,6 @@ Audio::Audio() {
 
 void Audio::play(const char* path) {
 
-    stopRequested = false;
     FILE *f = fopen(path, "rb");
     if (!f) {
         printf("Failed to open file\n");
@@ -30,8 +29,6 @@ void Audio::play(const char* path) {
     size_t bytes_read;
 
     while ((bytes_read = fread(buffer, 1, sizeof(buffer), f)) > 0) {
-        if (stopRequested)
-            break;
         esp_codec_dev_write(speaker_dev, buffer, bytes_read);
     }
 
@@ -46,9 +43,9 @@ void Audio::gameOver() {
     play("/spiffs/game_over.wav");
 }
 
-void Audio::blockBreak() {
-    play("/spiffs/block_break.wav");
-}
+// void Audio::blockBreak() {
+//     play("/spiffs/block_break.wav");
+// }
 
 void Audio::adjustVolume(uint32_t volume) {
     // TODO scrollbar volume adjuster
