@@ -13,5 +13,5 @@ public:
 
 
 private:
-    lv_obj_t* label = nullptr;
+    lv_obj_t* display = nullptr;
 };

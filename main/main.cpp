@@ -8,6 +8,7 @@
 
 Touch *touch;
 Audio *audio;
+Screen *screen;
 static TaskHandle_t playSoundHandle = NULL;
 QueueHandle_t soundQueue;
 
@@ -39,24 +40,20 @@ extern "C" void app_main()
     static Display display;
     touch = new Touch();
     audio = new Audio();
+    menuScreen = new Screen();
+    gameOverScreen = new Screen();
+    gameScreen = new Screen();
+
     soundQueue = xQueueCreate(5, sizeof(SoundRequest));
     xTaskCreate(playSoundTask, "playSoundTask", 4096, NULL, 5, &playSoundHandle);
     setState(GameState::MENU);
-    ESP_LOGI("HEAP", "Internal: %u, SPIRAM: %u",
-         heap_caps_get_free_size(MALLOC_CAP_INTERNAL),
-         heap_caps_get_free_size(MALLOC_CAP_SPIRAM));
 
     while (true)
     {
         lv_tick_inc(16);
-
-        // instead of handler being after the switch state, it needs to be here
-        // if its after the state the program keeps crashing :)
-        
         if (state == GameState::PLAYING) {
             updateGame();
         }
-        
         vTaskDelay(pdMS_TO_TICKS(16));
     }
 }

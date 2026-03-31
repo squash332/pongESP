@@ -6,4 +6,3 @@ extern lv_obj_t* blocks_objs[COLS][ROWS];
 
 void initBlocks();
 void createBlocks(lv_obj_t* parent);
-uint32_t calculateScore();

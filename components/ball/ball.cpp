@@ -1,9 +1,10 @@
 #include "ball.hpp"
 extern std::unique_ptr<Paddle> paddle;
-static int BLOCK_COUNT = COLS*ROWS;
+
 
 Ball::Ball(lv_obj_t *parent) : GameObject(parent)
 {
+    block_count = COLS * ROWS;
     active = true; // after 5 or 6 games, games insta crashed, probably because i set the active flag true in class and not here in constructor (fixed)
     setSize(BALL_SIZE, BALL_SIZE);
     setColor(0xFFFFFF);
@@ -34,9 +35,10 @@ void Ball::update()
 
     setPosition(x, y);
     // if (gameOver()) if game over, popup -> stops game, shows Score, time elapsed, Options: play again, Back to Menu
-    if (gameOver())
+    if (gameOver()) {
+        printf("GAME OVER: y=%ld row=%d block_count=%ld\n",y, getBallRow(), block_count);
         active = false;
-        
+    }
 }
 
 bool Ball::collidedSides()
@@ -52,7 +54,7 @@ bool Ball::collidedTop()
 
 bool Ball::gameOver()
 {
-    if (y > DISPLAY_HEIGHT - getHeight() - Y_OFFSET || BLOCK_COUNT == 0)
+    if (y > DISPLAY_HEIGHT - getHeight() - Y_OFFSET || block_count == 0)
         return true;
 
     return false;
@@ -70,9 +72,10 @@ bool Ball::collidedBlock()
     {
         blocks[ball_col][ball_row] = false;
         bsp_display_lock(0);
-        lv_obj_del(blocks_objs[ball_col][ball_row]);
-        blocks_objs[ball_col][ball_row] = nullptr;
+        lv_obj_del_async(blocks_objs[ball_col][ball_row]);;
         bsp_display_unlock();
+        blocks_objs[ball_col][ball_row] = nullptr;
+        score += 10;
         int blockX = ball_col * (TILE_SIZE + SPACING) + X_OFFSET;
         int blockY = ball_row * (TILE_SIZE + SPACING / 2) + Y_OFFSET;
 
@@ -87,7 +90,7 @@ bool Ball::collidedBlock()
         else
             vy = -vy;
 
-        BLOCK_COUNT--;
+        block_count--;
         hitBlock = true;
         return true;
     }
@@ -97,7 +100,7 @@ bool Ball::collidedBlock()
 
 bool Ball::collidedPaddle()
 {
-    if (!paddle) 
+    if (!paddle)
         return false;
     // AABB
     bool overlap = x < paddle->getX() + paddle->getWidth() && x + getWidth() > paddle->getX() && y < PADDLE_Y_POS + paddle->getHeight() && y + getHeight() > PADDLE_Y_POS;
@@ -133,5 +136,10 @@ int16_t Ball::getBallCol() const
 }
 int16_t Ball::getBallRow() const
 {
-    return (getCenterY() - Y_OFFSET) / (TILE_SIZE + SPACING / 2);
+    return (getCenterY() - Y_OFFSET) / (TILE_SIZE + SPACING / 1.5);
+}
+
+uint32_t Ball::getScore() const
+{
+    return score;
 }

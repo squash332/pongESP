@@ -17,5 +17,6 @@ enum SoundRequest {
 };
 
 extern GameState state;
+extern lv_obj_t* currentScore;
 void setState(GameState newState);
 void playSound(SoundRequest sound);

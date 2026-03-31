@@ -2,7 +2,6 @@
 
 #include "lvgl.h"
 
-#define DISP lv_display_get_default()
 
 constexpr int DISPLAY_WIDTH  = 320;
 constexpr int DISPLAY_HEIGHT = 240;

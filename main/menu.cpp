@@ -3,24 +3,18 @@
 #include "menu.hpp"
 #include "constants.hpp"
 
-Screen* menuScreen;
 
 static void play_button_event_cb(lv_event_t *e)
 {
     if (lv_event_get_code(e) == LV_EVENT_CLICKED)
     {
-        ESP_LOGI("BUTTON EVENT", "PLAY AGAIN PRESSED");
-        lv_async_call([](void *){
-            setState(GameState::PLAYING);
-        }, NULL);
+        ESP_LOGI("BUTTON EVENT", "PLAY GAME PRESSED");
+        setState(GameState::PLAYING);
     }
 }
 
-void showMenu()
+void createMenu()
 {
-    menuScreen = new Screen();
-    lv_scr_load(menuScreen->scr);
-
     // lv_obj_set_size(menuScreen->scr, DISPLAY_WIDTH, DISPLAY_HEIGHT);
     lv_obj_set_style_bg_color(menuScreen->scr, lv_color_hex(0x000000), LV_PART_MAIN);
     lv_obj_set_style_bg_opa(menuScreen->scr, LV_OPA_COVER, LV_PART_MAIN);
@@ -46,12 +40,7 @@ void showMenu()
     // timer maybe ?
 }
 
-void hideMenu()
+void clearMenuScreen()
 {
-    if (menuScreen)
-    {
-        lv_obj_del_async(menuScreen->scr);
-        delete menuScreen;
-        menuScreen = nullptr;
-    }
+    lv_obj_clean(menuScreen->scr);
 }
