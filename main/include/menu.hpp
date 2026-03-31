@@ -2,5 +2,5 @@
 
 #include "game_object.hpp"
 
-void showMenu();
-void hideMenu();
+void createMenu();
+void clearMenuScreen();

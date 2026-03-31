@@ -1,16 +1,21 @@
 #pragma once
 #include "lvgl.h"
 
-class Screen {
-    public:
-    lv_obj_t* scr;
+class Screen
+{
+public:
+    lv_obj_t *scr;
 
-    Screen(); // h and w in % ranged [0,100]
+    Screen();
     ~Screen() = default;
-    
-    lv_obj_t* getScr();
-    lv_obj_t* label;
 
-    void show();
-    void hide();
+    lv_obj_t *getScr();
+    lv_obj_t *label;
+
+    void load();
+    void loadWithDelete();
 };
+
+extern Screen *menuScreen;
+extern Screen *gameScreen;
+extern Screen *gameOverScreen;

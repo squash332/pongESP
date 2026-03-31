@@ -4,19 +4,38 @@
 #include "menu.hpp"
 
 GameState state = GameState::MENU;
+extern QueueHandle_t soundQueue;
 
-void setState(GameState newState) {
-    switch(state) {
-        case GameState::MENU: hideMenu(); break;
-        case GameState::PLAYING: hideGame(); break;
-        case GameState::GAME_OVER: hideGameOver(); break;
+void setState(GameState newState)
+{
+    switch(newState)
+    {
+        case GameState::MENU:
+            if (menuScreen) clearMenuScreen();
+            createMenu();
+            menuScreen->load();
+            break;
+        
+        case GameState::PLAYING:
+            if ( gameScreen) gameReset(); 
+            gameInit();
+            gameScreen->load();
+            playSound(SOUND_GAME_LOAD);
+            break;
+        
+        case GameState::GAME_OVER:
+            if (gameOverScreen) resetGameOverScreen();
+            createGameOver(score);
+            gameOverScreen->load();
+            playSound(SOUND_GAME_OVER);
+            break;
     }
 
     state = newState;
+}
 
-    switch(state) {
-        case GameState::MENU: showMenu(); break;
-        case GameState::PLAYING: gameInit(); break;
-        case GameState::GAME_OVER: showGameOver(score); break;
+void playSound(SoundRequest sound) {
+    if (soundQueue != NULL) {
+        xQueueSend(soundQueue, &sound, 0);
     }
 }
