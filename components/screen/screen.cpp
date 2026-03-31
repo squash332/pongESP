@@ -27,4 +27,3 @@ lv_obj_t *Screen::getScr()
 {
     return scr;
 }
-

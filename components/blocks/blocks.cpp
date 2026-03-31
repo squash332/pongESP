@@ -1,5 +1,4 @@
 #include "blocks.hpp"
-#include <cstdio>
 
 bool blocks[COLS][ROWS];
 
@@ -36,4 +35,3 @@ void createBlocks(lv_obj_t *parent)
         }
     }
 }
-

@@ -1,7 +1,6 @@
 #include "ball.hpp"
 extern std::unique_ptr<Paddle> paddle;
 
-
 Ball::Ball(lv_obj_t *parent) : GameObject(parent)
 {
     block_count = COLS * ROWS;
@@ -35,8 +34,9 @@ void Ball::update()
 
     setPosition(x, y);
     // if (gameOver()) if game over, popup -> stops game, shows Score, time elapsed, Options: play again, Back to Menu
-    if (gameOver()) {
-        printf("GAME OVER: y=%ld row=%d block_count=%ld\n",y, getBallRow(), block_count);
+    if (gameOver())
+    {
+        printf("GAME OVER: y=%ld row=%d block_count=%ld\n", y, getBallRow(), block_count);
         active = false;
     }
 }
@@ -72,7 +72,8 @@ bool Ball::collidedBlock()
     {
         blocks[ball_col][ball_row] = false;
         bsp_display_lock(0);
-        lv_obj_del_async(blocks_objs[ball_col][ball_row]);;
+        lv_obj_del_async(blocks_objs[ball_col][ball_row]);
+        ;
         bsp_display_unlock();
         blocks_objs[ball_col][ball_row] = nullptr;
         score += 10;

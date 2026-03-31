@@ -1,8 +1,5 @@
 #pragma once
 
-#include "lvgl.h"
-
-
 constexpr int DISPLAY_WIDTH  = 320;
 constexpr int DISPLAY_HEIGHT = 240;
 

@@ -1,5 +1,4 @@
 #include "display.hpp"
-#include "constants.hpp"
 
 Display::Display()
 {

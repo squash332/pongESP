@@ -1,8 +1,6 @@
 #pragma once 
-#include "lvgl.h"
 #include "screen.hpp"
 #include "esp_log.h"
-#include "esp_heap_caps.h"
 
 enum class GameState {
     MENU, 

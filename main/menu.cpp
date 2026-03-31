@@ -1,8 +1,6 @@
-#include "game_object.hpp"
+#include "lvgl.h"
 #include "game_state.hpp"
 #include "menu.hpp"
-#include "constants.hpp"
-
 
 static void play_button_event_cb(lv_event_t *e)
 {
