@@ -36,6 +36,6 @@ void setState(GameState newState)
 
 void playSound(SoundRequest sound) {
     if (soundQueue != NULL) {
-        xQueueSend(soundQueue, &sound, 0);
+        xQueueOverwrite(soundQueue, &sound);
     }
 }

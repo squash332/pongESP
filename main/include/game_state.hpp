@@ -11,7 +11,7 @@ enum class GameState {
 enum SoundRequest {
     SOUND_GAME_LOAD,
     SOUND_GAME_OVER,
-    // SOUND_BLOCK_BREAK
+    SOUND_BLOCK_BREAK
 };
 
 extern GameState state;

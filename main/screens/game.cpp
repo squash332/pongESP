@@ -40,6 +40,9 @@ void updateGame()
 {
     if (ball->active)
     {
+        if(ball->hitBlock) {
+            playSound(SOUND_BLOCK_BREAK);
+        }
         ball->update();
     }
     else

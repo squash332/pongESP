@@ -28,6 +28,11 @@ void playSoundTask(void *arg)
             case SOUND_GAME_OVER:
                 audio->gameOver();
                 break;
+            
+            case SOUND_BLOCK_BREAK:
+                audio->blockBreak();
+                break;
+
             }
         }
     }
@@ -42,7 +47,7 @@ extern "C" void app_main()
     gameOverScreen = new Screen();
     gameScreen = new Screen();
 
-    soundQueue = xQueueCreate(5, sizeof(SoundRequest));
+    soundQueue = xQueueCreate(1, sizeof(SoundRequest));
     xTaskCreate(playSoundTask, "playSoundTask", 4096, NULL, 5, &playSoundHandle);
     setState(GameState::MENU);
 

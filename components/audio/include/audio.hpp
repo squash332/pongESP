@@ -17,6 +17,7 @@ public:
     void play(const char *path);
     void gameLoad();
     void gameOver();
+    void blockBreak();
     void adjustVolume(uint32_t volume);
     void muteAudio();
 };
