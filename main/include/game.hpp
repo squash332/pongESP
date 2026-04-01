@@ -8,7 +8,6 @@
 #include "touch.hpp"
 #include "blocks.hpp"
 #include "audio.hpp"
-#include "menu.hpp"
 
 void gameInit();
 void updateGame();

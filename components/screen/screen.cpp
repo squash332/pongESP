@@ -3,6 +3,7 @@
 Screen *menuScreen = nullptr;
 Screen *gameScreen = nullptr;
 Screen *gameOverScreen = nullptr;
+Screen *settingsScreen = nullptr;
 
 Screen::Screen()
 {

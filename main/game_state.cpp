@@ -12,6 +12,7 @@ void setState(GameState newState)
     {
         case GameState::MENU:
             if (menuScreen) clearMenuScreen();
+            if (settingsScreen) clearSettingsScreen();
             createMenu();
             menuScreen->load();
             break;
