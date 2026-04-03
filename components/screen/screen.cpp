@@ -17,6 +17,7 @@ Screen::Screen()
 void Screen::load()
 {
     lv_screen_load_anim(scr, LV_SCREEN_LOAD_ANIM_FADE_IN, 100, 0, false);
+    lv_indev_wait_release(lv_indev_active());
 }
 
 void Screen::loadWithDelete()

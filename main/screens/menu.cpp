@@ -16,9 +16,7 @@ static void settings_button_event_cb(lv_event_t *e)
     if (lv_event_get_code(e) == LV_EVENT_CLICKED)
     {
         ESP_LOGI("BUTTON EVENT", "OPEN SETINGS PRESSED");
-        clearMenuScreen();
-        createSettings();
-        settingsScreen->load();
+        setState(GameState::SETTINGS);
     }
 }
 

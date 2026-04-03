@@ -55,7 +55,7 @@ void Audio::blockBreak() {
 
 void Audio::adjustVolume(uint32_t volume)
 {
-    // TODO scrollbar volume adjuster
+    esp_codec_dev_set_out_vol(speaker_dev, volume);
 }
 
 void Audio::muteAudio()

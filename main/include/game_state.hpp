@@ -5,7 +5,8 @@
 enum class GameState {
     MENU, 
     PLAYING,
-    GAME_OVER
+    GAME_OVER,
+    SETTINGS
 };
 
 enum SoundRequest {
