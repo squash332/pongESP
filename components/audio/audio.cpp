@@ -7,7 +7,7 @@ Audio::Audio()
     // spiffs init
     bsp_spiffs_mount();
 
-    esp_codec_dev_set_out_vol(speaker_dev, 20);
+    esp_codec_dev_set_out_vol(speaker_dev, 30);
 
     esp_codec_dev_sample_info_t fs = {};
 
@@ -49,13 +49,13 @@ void Audio::gameOver()
     play("/spiffs/game_over.wav");
 }
 
-// void Audio::blockBreak() {
-//     play("/spiffs/block_break.wav");
-// }
+void Audio::blockBreak() {
+    play("/spiffs/block_break.wav");
+}
 
 void Audio::adjustVolume(uint32_t volume)
 {
-    // TODO scrollbar volume adjuster
+    esp_codec_dev_set_out_vol(speaker_dev, volume);
 }
 
 void Audio::muteAudio()

@@ -19,3 +19,4 @@ public:
 extern Screen *menuScreen;
 extern Screen *gameScreen;
 extern Screen *gameOverScreen;
+extern Screen *settingsScreen;

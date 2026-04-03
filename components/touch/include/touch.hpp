@@ -9,7 +9,6 @@ class Touch
 public:
     Touch();
     ~Touch() = default;
-    bool read();
 
     uint32_t x, y;
 

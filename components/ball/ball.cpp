@@ -73,7 +73,6 @@ bool Ball::collidedBlock()
         blocks[ball_col][ball_row] = false;
         bsp_display_lock(0);
         lv_obj_del_async(blocks_objs[ball_col][ball_row]);
-        ;
         bsp_display_unlock();
         blocks_objs[ball_col][ball_row] = nullptr;
         score += 10;
